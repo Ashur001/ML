@@ -3,7 +3,6 @@ import pandas as pd
 import tensorflow as tf
 from tensorflow.keras import layers
 from matplotlib import pyplot as plt
-from PIL import Image 
 from numpy import asarray
 
 # FUNCTIONS COPIED FROM: 
@@ -85,10 +84,11 @@ epochs, hist = train_model(my_model, normalized_training, training_label,
                            epochs, batch_size, validation_split)
 
 metrics = ['accuracy']
-plot_curve(epochs, hist, metrics)
 
 print("\n Evaluate the new model against the test set:")
 my_model.evaluate(x=test_features,y=test_labels, batch_size=batch_size)
 
+print("\nSaving the model...")
+my_model.save('my_model')
 
 
